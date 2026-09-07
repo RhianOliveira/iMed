@@ -1,4 +1,4 @@
-# iMed - Sistema de Gestão Médica Inteligente
+# iMed - Sistema de Gestão Médica
 
 Este projeto é um aplicativo Android desenvolvido para a disciplina de **Tópicos Especiais em Informática** na **FATEC São Caetano do Sul**. O **iMed** é uma plataforma completa para intermediação e gestão de consultas médicas, focada em uma experiência de usuário (UX) intuitiva e um design moderno.
 
