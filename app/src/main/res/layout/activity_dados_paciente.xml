@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_navy"
+    tools:context=".DadosPacienteActivity">
+
+    <!-- Top Navigation -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnVoltar"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:icon="?attr/homeAsUpIndicator"
+        app:iconTint="@color/pure_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPersonalTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/personal_info_title"
+        android:textColor="@color/pure_white"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnVoltar" />
+
+    <TextView
+        android:id="@+id/tvPersonalSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/personal_info_subtitle"
+        android:textColor="#B0BEC5"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPersonalTitle" />
+
+    <!-- Curved Content Area -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/personalContentCard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        app:cardBackgroundColor="@color/pure_white"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPersonalSubtitle"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.IMed.LoginCard">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="32dp"
+                android:paddingTop="32dp"
+                android:paddingBottom="40dp">
+
+                <!-- Profile Photo Section - CENTERED -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardProfilePhoto"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="60dp"
+                    app:cardElevation="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ivProfilePhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@android:drawable/ic_menu_camera"
+                        app:tint="@color/hint_gray"
+                        tools:ignore="ContentDescription" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- SECTION: DADOS PESSOAIS -->
+                <TextView
+                    android:id="@+id/tvHeaderDados"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="DADOS PESSOAIS"
+                    android:textColor="@color/primary_navy"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardProfilePhoto" />
+
+                <!-- Nome Field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputNomeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:boxBackgroundMode="none"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/tvHeaderDados">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNomePaciente"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_input_new"
+                        android:hint="@string/name_placeholder"
+                        android:paddingHorizontal="20dp"
+                        android:textColor="@color/pure_black"
+                        android:textColorHint="@color/hint_gray" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Gender Field (Dropdown) -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputGeneroLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:boxBackgroundMode="none"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/inputNomeLayout">
+                    <AutoCompleteTextView
+                        android:id="@+id/etGenero"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_input_new"
+                        android:hint="@string/hint_gender"
+                        android:inputType="none"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:paddingHorizontal="20dp"
+                        android:textColor="@color/pure_black"
+                        android:textColorHint="@color/hint_gray" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- CPF Field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputCpfLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:boxBackgroundMode="none"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/inputGeneroLayout">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCpf"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_input_new"
+                        android:hint="@string/hint_cpf"
+                        android:inputType="phone"
+                        android:paddingHorizontal="20dp"
+                        android:textColor="@color/pure_black"
+                        android:textColorHint="@color/hint_gray" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- RG Field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputRgLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:boxBackgroundMode="none"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/inputCpfLayout">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRg"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_input_new"
+                        android:hint="@string/hint_rg"
+                        android:paddingHorizontal="20dp"
+                        android:textColor="@color/pure_black"
+                        android:textColorHint="@color/hint_gray" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Birthdate Field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputNascLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:boxBackgroundMode="none"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/inputRgLayout">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDataNasc"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_input_new"
+                        android:hint="@string/hint_birthdate"
+                        android:inputType="date"
+                        android:paddingHorizontal="20dp"
+                        android:textColor="@color/pure_black" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- SECTION: SAÚDE -->
+                <TextView
+                    android:id="@+id/tvHeaderSaude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="SAÚDE"
+                    android:textColor="@color/primary_navy"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/inputNascLayout" />
+
+                <!-- Blood Type Field (Dropdown) -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputSanguineoLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:boxBackgroundMode="none"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/tvHeaderSaude">
+                    <AutoCompleteTextView
+                        android:id="@+id/etTipoSanguineo"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_input_new"
+                        android:hint="@string/hint_blood_type"
+                        android:inputType="none"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:paddingHorizontal="20dp"
+                        android:textColor="@color/pure_black"
+                        android:textColorHint="@color/hint_gray" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Allergies Field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputAlergiasLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:boxBackgroundMode="none"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/inputSanguineoLayout">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etAlergias"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_input_new"
+                        android:hint="@string/hint_alergias"
+                        android:paddingHorizontal="20dp"
+                        android:textColor="@color/pure_black"
+                        android:textColorHint="@color/hint_gray" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- SECTION: CONTATO E ENDEREÇO -->
+                <TextView
+                    android:id="@+id/tvHeaderContato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="CONTATO E ENDEREÇO"
+                    android:textColor="@color/primary_navy"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/inputAlergiasLayout" />
+
+                <!-- Email Field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputEmailLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:boxBackgroundMode="none"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/tvHeaderContato">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_input_new"
+                        android:hint="@string/email_placeholder"
+                        android:inputType="textEmailAddress"
+                        android:paddingHorizontal="20dp"
+                        android:textColor="@color/pure_black"
+                        android:textColorHint="@color/hint_gray" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Celular Field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputCelLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:boxBackgroundMode="none"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/inputEmailLayout">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCelular"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_input_new"
+                        android:hint="@string/hint_phone"
+                        android:inputType="phone"
+                        android:paddingHorizontal="20dp"
+                        android:textColor="@color/pure_black"
+                        android:textColorHint="@color/hint_gray" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- CEP Field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputCepLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:boxBackgroundMode="none"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/inputCelLayout">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCep"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_input_new"
+                        android:hint="@string/hint_cep"
+                        android:inputType="phone"
+                        android:paddingHorizontal="20dp"
+                        android:textColor="@color/pure_black"
+                        android:textColorHint="@color/hint_gray" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- UF Field (Dropdown) -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputUfLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:boxBackgroundMode="none"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/inputCepLayout">
+                    <AutoCompleteTextView
+                        android:id="@+id/etUf"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_input_new"
+                        android:hint="@string/hint_uf"
+                        android:inputType="none"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:paddingHorizontal="20dp"
+                        android:textColor="@color/pure_black"
+                        android:textColorHint="@color/hint_gray" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- City Field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputCidadeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:boxBackgroundMode="none"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/inputUfLayout">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCidade"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_input_new"
+                        android:hint="@string/hint_city"
+                        android:paddingHorizontal="20dp"
+                        android:textColor="@color/pure_black"
+                        android:textColorHint="@color/hint_gray" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Address Field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputEndLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:boxBackgroundMode="none"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/inputCidadeLayout">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEndereco"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_input_new"
+                        android:hint="@string/hint_address"
+                        android:paddingHorizontal="20dp"
+                        android:textColor="@color/pure_black"
+                        android:textColorHint="@color/hint_gray" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Number Field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputNumLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:boxBackgroundMode="none"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/inputEndLayout">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNumero"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_input_new"
+                        android:hint="@string/hint_number"
+                        android:inputType="number"
+                        android:paddingHorizontal="20dp"
+                        android:textColor="@color/pure_black"
+                        android:textColorHint="@color/hint_gray" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Save Action Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSalvar"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="48dp"
+                    android:text="@string/btn_save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/pure_white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/primary_navy"
+                    app:cornerRadius="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/inputNumLayout" />
+
+                <!-- Danger Zone Action -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnExcluir"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/btn_delete"
+                    android:textAllCaps="false"
+                    android:textColor="#B71C1C"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@id/btnSalvar" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary_navy">#06152D</color>
+    <color name="primary_navy_light">#1E2B45</color>
+    <color name="background_light">#F5F7FA</color>
+    <color name="text_hint">#757575</color>
+    <color name="accent_blue">#0D47A1</color>
+    <color name="gradient_start">#06152D</color>
+    <color name="gradient_end">#0F2544</color>
+    <color name="input_background">#F0F4F8</color>
+    <color name="text_primary">#06152D</color>
+    <color name="pure_black">#000000</color>
+    <color name="pure_white">#FFFFFF</color>
+    <color name="input_gray">#F7F8F9</color>
+    <color name="hint_gray">#94A3B8</color>
+</resources>

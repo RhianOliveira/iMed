@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "609017299254",
+    "project_id": "imed-b1f6a",
+    "storage_bucket": "imed-b1f6a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609017299254:android:ab67826a1cd71fe6593397",
+        "android_client_info": {
+          "package_name": "com.example.imed"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfHri0j8nVnqJSdh5oOdGCC47O6n5KzKg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

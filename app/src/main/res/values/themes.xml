@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.IMed" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary_navy</item>
+        <item name="colorSecondary">@color/accent_blue</item>
+        <item name="android:statusBarColor">@color/primary_navy</item>
+    </style>
+
+    <style name="Theme.IMed" parent="Base.Theme.IMed" />
+
+    <style name="ShapeAppearance.IMed.LoginCard" parent="">
+        <item name="cornerSizeTopLeft">80dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+</resources>
